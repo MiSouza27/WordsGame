@@ -1,0 +1,1434 @@
+Manager:
+    MainMenu:
+        name:'principal'
+    PlayMenu:
+        name:'play'
+    FaseUm:
+        name:'fase1'
+    FaseUmCerto:
+        name:'fase1c'
+    FaseDois:
+        name:'fase2'
+    FaseDoisCerto:
+        name:'fase2c'
+    FaseTres:
+        name:'fase3'
+    FaseTresCerto:
+        name:'fase3c'
+    FaseQuatro:
+        name:'fase4'
+    FaseQuatroCerto:
+        name:'fase4c'
+    FaseCinco:
+        name:'fase5'
+    FaseCincoCerto:
+        name:'fase5c'
+    FaseSeis:
+        name:'fase6'
+    FaseSeisCerto:
+        name:'fase6c'
+    FaseSete:
+        name:'fase7'
+    FaseSeteCerto:
+        name:'fase7c'
+    FaseOito:
+        name:'fase8'
+    FaseOitoCerto:
+        name:'fase8c'
+    FaseNove:
+        name:'fase9'
+    FaseNoveCerto:
+        name:'fase9c'
+    FaseDez:
+        name:'fase10'
+    FaseDezCerto:
+        name:'fase10c'
+    FaseOnze:
+        name:'fase11'
+    FaseOnzeCerto:
+        name:'fase11c'
+
+
+
+<MenuButton@Button>:
+    font_size: '50sp'
+    background_normal: 'menuButton.png'
+    background_down: 'menuButtonPressed.png'
+
+<PlayButton@Button>
+    font_size: '50sp'
+    background_normal: 'playButton.png'
+    background_down: 'playButtonPressed.png'
+
+<Pontos@Botao>
+
+
+<Botao@ButtonBehavior+Label>
+    canvas.before:
+        Color:
+            rgb: 0.5, 0.7, 1, 1
+        Ellipse:
+            pos: self.pos
+            size: self.height, self.height
+        Ellipse:
+            pos: self.x + self.width - self.height, self.y
+            size: self.height, self.height
+        Rectangle:
+            pos: self.x+self.height/2.0, self.y
+            size: self.width-self.height, self.height
+
+<MainMenu>:
+    BoxLayout:
+        canvas:
+            Color:
+                rgba: 1,1,1,1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                source: 'fundo.png'
+        orientation: 'vertical'
+        padding: '150dp', '50dp'
+        spacing:'180dp'
+        Widget:
+        BoxLayout:
+            padding: '10dp'
+            spacing:'80dp'
+            MenuButton:
+                text:'Iniciar'
+                on_release: app.root.current= 'play'
+            MenuButton
+                text:'Sair'
+                on_release: root.confirmacao()
+
+<PlayMenu>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 100
+        spacing:60
+        canvas:
+            Color:
+                rgba: 1,1,1,1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                source: 'back_clear.png'
+        ScrollView:
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y: None
+                height: self.minimum_height
+                spacing: 10
+                Botao:
+                    text: 'FASE 1'
+                    bold: True
+                    size_hint_y: None
+                    height: 50
+                    font_size: 20
+                    on_release: app.root.current = 'fase1'
+                Botao:
+                    text:'FASE 2'
+                    bold: True
+                    size_hint_y: None
+                    height: 50
+                    font_size: 20
+                    on_release: app.root.current = 'fase2'
+                Botao:
+                    text:'FASE 3'
+                    bold: True
+                    size_hint_y: None
+                    height: 50
+                    font_size: 20
+                    on_release: app.root.current = 'fase3'
+                Botao:
+                    text:'FASE 4'
+                    bold: True
+                    size_hint_y: None
+                    height: 50
+                    font_size: 20
+                    on_release: app.root.current = 'fase4'
+                Botao:
+                    text:'FASE 5'
+                    bold: True
+                    size_hint_y: None
+                    height: 50
+                    font_size: 20
+                    on_release: app.root.current = 'fase5'
+                Botao:
+                    text:'FASE 6'
+                    bold: True
+                    size_hint_y: None
+                    height: 50
+                    font_size: 20
+                    on_release: app.root.current = 'fase6'
+                Botao:
+                    text:'FASE 7'
+                    bold: True
+                    size_hint_y: None
+                    height: 50
+                    font_size: 20
+                    on_release: app.root.current = 'fase7'
+                Botao:
+                    text:'FASE 8'
+                    bold: True
+                    size_hint_y: None
+                    height: 50
+                    font_size: 20
+                    on_release: app.root.current = 'fase8'
+                Botao:
+                    text:'FASE 9'
+                    bold: True
+                    size_hint_y: None
+                    height: 50
+                    font_size: 20
+                    on_release: app.root.current = 'fase9'
+                Botao:
+                    text:'FASE 10'
+                    bold: True
+                    size_hint_y: None
+                    height: 50
+                    font_size: 20
+                    on_release: app.root.current = 'fase10'
+                Botao:
+                    text:'FASE 11'
+                    bold: True
+                    size_hint_y: None
+                    height: 50
+                    font_size: 20
+                    on_release: app.root.current = 'fase11'
+        BoxLayout:
+            size_hint_y: None
+            height: 60
+            spacing: 100
+            Botao:
+                size_hint_y: None
+                height: 45
+                text: 'Sair'
+                font_size: 20
+                bold: True
+                on_release: app.stop()
+
+#Fase Um
+
+<FaseUm>:
+    BoxLayout:
+        id: box
+        canvas.before:
+            Color:
+                rgba: 1,1,1,1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                source: 'back_clear.png'
+        orientation: 'vertical'
+        ActionBar:
+            ActionView:
+                ActionPrevious:
+                    title:'COMPLETE COM X OU CH'
+                    with_previous: False
+                    on_release: app.root.current ='play'
+                ActionButton:
+                    text: 'Sair'
+                    on_release: app.stop()
+    Widget:
+    BoxLayout:
+        padding: 10
+        size_hint_y: None
+        height: 60
+        spacing: 10
+        Botao:
+            font_size:22
+            bold: True
+            text: 'Ver Palavras'
+            on_press: app.root.current='fase1c'
+        Pontos:
+            id: ponto
+            text: '0'
+            font_size: 22
+            bold: True
+            height: self.font_size
+
+<FaseUmCerto>:
+    BoxLayout:
+        id: boxcerto
+        canvas.before:
+            Color:
+                rgba: 1,1,1,1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                source: 'back_clear.png'
+        orientation: 'vertical'
+        ActionBar:
+            ActionView:
+                ActionPrevious:
+                    title:'1 COMPLETE COM X OU CH'
+                    with_previous: False
+                    on_release: app.root.current ='play'
+                ActionButton:
+                    text: 'Sair'
+                    on_release: app.stop()
+    Widget:
+    BoxLayout:
+        padding: 10
+        size_hint_y: None
+        height: 60
+        Botao:
+            font_size:20
+            text: 'Continuar'
+            on_press: app.root.current='fase2'
+
+<words>
+    id: palavra
+    padding: 50
+    spacing: 10
+    BoxLayout
+        padding: 70
+        Label:
+            id: label1
+            color: 0.1, 0.5, 0.8, 1
+            font_size: 45
+            bold: True
+    BoxLayout:
+        padding: 40
+        spacing:50
+        Botao:
+            id: ch
+            font_size: '30sp'
+            size_hint_y: None
+            height: 60
+            background_normal: 'menuButton.png'
+            background_down: 'menuButtonPressed.png'
+            text:'X'
+            on_press: root.remove_widget(self.parent)
+            on_release: root.ids.label1.text='Errado'
+        Botao:
+            id: x
+            font_size: '30sp'
+            size_hint_y: None
+            height: 60
+            background_normal: 'menuButton.png'
+            background_down: 'menuButtonPressed.png'
+            text:'CH'
+            on_press: root.remove_widget(self.parent)
+            on_release: app.root.get_screen('fase1').ids.ponto.text= str(int(app.root.get_screen('fase1').ids.ponto.text)+1)
+
+
+<WordsComplete>
+    id: palavra
+    padding: 20
+    Label:
+        id: label
+        color: 0.1, 0.5, 0.8, 1
+        font_size: 50
+        bold: True
+
+# Fase Dois
+
+<FaseDois>:
+    BoxLayout:
+        id: box2
+        canvas.before:
+            Color:
+                rgba: 1,1,1,1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                source: 'back_clear.png'
+        orientation: 'vertical'
+        ActionBar:
+            ActionView:
+                ActionPrevious:
+                    title:'COMPLETE COM S OU SS'
+                    with_previous: False
+                    on_release: app.root.current ='play'
+                ActionButton:
+                    text: 'Sair'
+                    on_release: app.stop()
+    Widget:
+    BoxLayout:
+        padding: 10
+        size_hint_y: None
+        height: 60
+        spacing: 10
+        Botao:
+            font_size:20
+            bold: True
+            text: 'Ver Palavras'
+            on_press: app.root.current='fase2c'
+        Pontos:
+            id: ponto
+            text: '0'
+            font_size: 22
+            bold: True
+            height: self.font_size
+
+<FaseDoisCerto>:
+    BoxLayout:
+        id: boxcerto2
+        canvas.before:
+            Color:
+                rgba: 1,1,1,1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                source: 'back_clear.png'
+        orientation: 'vertical'
+        ActionBar:
+            ActionView:
+                ActionPrevious:
+                    title:'2 COMPLETE COM S OU SS'
+                    on_release: app.root.current ='play'
+                ActionButton:
+                    text: 'Sair'
+                    on_release: app.stop()
+    Widget:
+    BoxLayout:
+        padding: 10
+        size_hint_y: None
+        height: 60
+        Botao:
+            font_size:20
+            text: 'Continuar'
+            on_press: app.root.current='fase3'
+
+<Words2>
+    id: palavra
+    padding: 50
+    spacing: 10
+    BoxLayout
+        padding: 70
+        Label:
+            id: label2
+            color: 0.1, 0.5, 0.8, 1
+            font_size: 45
+            bold: True
+    BoxLayout:
+        padding: 40
+        spacing:50
+        Botao:
+            font_size: '30sp'
+            size_hint_y: None
+            height: 60
+            background_normal: 'menuButton.png'
+            background_down: 'menuButtonPressed.png'
+            text:'SS'
+            on_press: root.remove_widget(self.parent)
+            on_release: app.root.get_screen('fase2').ids.ponto.text= str(int(app.root.get_screen('fase2').ids.ponto.text)+1)
+        Botao:
+            font_size: '30sp'
+            size_hint_y: None
+            height: 60
+            background_normal: 'menuButton.png'
+            background_down: 'menuButtonPressed.png'
+            text:'S'
+            on_press: root.remove_widget(self.parent)
+            on_release: root.ids.label2.text='Errado'
+
+<WordsComplete2>
+    id: palavra
+    padding: 20
+    Label:
+        id: labelc2
+        color: 0.1, 0.5, 0.8, 1
+        font_size: 50
+        bold: True
+
+# Fase Três
+
+<FaseTres>:
+    BoxLayout:
+        id: box3
+        canvas.before:
+            Color:
+                rgba: 1,1,1,1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                source: 'back_clear.png'
+        orientation: 'vertical'
+        ActionBar:
+            ActionView:
+                ActionPrevious:
+                    title:'3 COMPLETE COM R OU RR'
+                    on_release: app.root.current ='play'
+                ActionButton:
+                    text: 'Sair'
+                    on_release: app.stop()
+    Widget:
+    BoxLayout:
+        padding: 10
+        size_hint_y: None
+        height: 60
+        spacing: 10
+        Botao:
+            font_size:20
+            bold: True
+            text: 'Ver Palavras'
+            on_press: app.root.current='fase3c'
+        Pontos:
+            id: ponto
+            text: '0'
+            font_size: 22
+            bold: True
+            height: self.font_size
+
+<FaseTresCerto>:
+    BoxLayout:
+        id: boxcerto3
+        canvas.before:
+            Color:
+                rgba: 1,1,1,1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                source: 'back_clear.png'
+        orientation: 'vertical'
+        ActionBar:
+            ActionView:
+                ActionPrevious:
+                    title:'COMPLETE COM R OU RR'
+                    on_release: app.root.current ='play'
+                ActionButton:
+                    text: 'Sair'
+                    on_release: app.stop()
+    Widget:
+    BoxLayout:
+        padding: 10
+        size_hint_y: None
+        height: 60
+        Botao:
+            font_size:20
+            text: 'Continuar'
+            on_press: app.root.current='fase4'
+
+<Words3>
+    id: palavra
+    padding: 50
+    spacing: 10
+    BoxLayout
+        padding: 70
+        Label:
+            id: label3
+            color: 0.1, 0.5, 0.8, 1
+            font_size: 45
+            bold: True
+    BoxLayout:
+        padding: 40
+        spacing:50
+        Botao:
+            font_size: '30sp'
+            size_hint_y: None
+            height: 60
+            background_normal: 'menuButton.png'
+            background_down: 'menuButtonPressed.png'
+            text:'R'
+            on_press: root.remove_widget(self.parent)
+            on_release: root.ids.label3.text='Errado'
+
+        Botao:
+            font_size: '30sp'
+            size_hint_y: None
+            height: 60
+            background_normal: 'menuButton.png'
+            background_down: 'menuButtonPressed.png'
+            text:'RR'
+            on_press: root.remove_widget(self.parent)
+            on_release: app.root.get_screen('fase3').ids.ponto.text= str(int(app.root.get_screen('fase3').ids.ponto.text)+1)
+
+<WordsComplete3>
+    id: palavra
+    padding: 20
+    Label:
+        id: labelc3
+        color: 0.1, 0.5, 0.8, 1
+        font_size: 50
+        bold: True
+
+#FASE QUATRO
+
+<FaseQuatro>:
+    BoxLayout:
+        id: box4
+        canvas.before:
+            Color:
+                rgba: 1,1,1,1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                source: 'back_clear.png'
+        orientation: 'vertical'
+        ActionBar:
+            ActionView:
+                ActionPrevious:
+                    title:'4 COMPLETE COM X OU Z'
+                    on_release: app.root.current ='play'
+                ActionButton:
+                    text: 'Sair'
+                    on_release: app.stop()
+    Widget:
+    BoxLayout:
+        padding: 10
+        size_hint_y: None
+        height: 60
+        spacing: 10
+        Botao:
+            font_size:20
+            bold: True
+            text: 'Ver Palavras'
+            on_press: app.root.current='fase4c'
+        Pontos:
+            id: ponto
+            text: '0'
+            font_size: 22
+            bold: True
+            height: self.font_size
+
+<FaseQuatroCerto>:
+    BoxLayout:
+        id: boxcerto4
+        canvas.before:
+            Color:
+                rgba: 1,1,1,1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                source: 'back_clear.png'
+        orientation: 'vertical'
+        ActionBar:
+            ActionView:
+                ActionPrevious:
+                    title:'COMPLETE COM X OU Z'
+                    on_release: app.root.current ='play'
+                ActionButton:
+                    text: 'Sair'
+                    on_release: app.stop()
+    Widget:
+    BoxLayout:
+        padding: 10
+        size_hint_y: None
+        height: 60
+        Botao:
+            font_size:20
+            text: 'Continuar'
+            on_press: app.root.current='fase5'
+
+<Words4>
+    id: palavra
+    padding: 50
+    spacing: 10
+    BoxLayout
+        padding: 70
+        Label:
+            id: label4
+            color: 0.1, 0.5, 0.8, 1
+            font_size: 45
+            bold: True
+    BoxLayout:
+        padding: 40
+        spacing:50
+        Botao:
+            font_size: '30sp'
+            size_hint_y: None
+            height: 60
+            background_normal: 'menuButton.png'
+            background_down: 'menuButtonPressed.png'
+            text:'X'
+            on_press: root.remove_widget(self.parent)
+            on_release: app.root.get_screen('fase4').ids.ponto.text= str(int(app.root.get_screen('fase4').ids.ponto.text)+1)
+        Botao:
+            font_size: '30sp'
+            size_hint_y: None
+            height: 60
+            background_normal: 'menuButton.png'
+            background_down: 'menuButtonPressed.png'
+            text:'Z'
+            on_press: root.remove_widget(self.parent)
+            on_release: root.ids.label4.text='Errado'
+
+<WordsComplete4>
+    id: palavra
+    padding: 20
+    Label:
+        id: labelc4
+        color: 0.1, 0.5, 0.8, 1
+        font_size: 50
+        bold: True
+
+# FASE CINCO
+
+<FaseCinco>:
+    BoxLayout:
+        id: box5
+        canvas.before:
+            Color:
+                rgba: 1,1,1,1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                source: 'back_clear.png'
+        orientation: 'vertical'
+        ActionBar:
+            ActionView:
+                ActionPrevious:
+                    title:'5 COMPLETE COM X OU SS'
+                    on_release: app.root.current ='play'
+                ActionButton:
+                    text: 'Sair'
+                    on_release: app.stop()
+    Widget:
+    BoxLayout:
+        padding: 10
+        size_hint_y: None
+        height: 60
+        spacing: 10
+        Botao:
+            font_size:22
+            text: 'Ver Palavras'
+            on_press: app.root.current='fase5c'
+        Pontos:
+            id: ponto
+            text: '0'
+            font_size: 22
+            bold: True
+            height: self.font_size
+
+<FaseCincoCerto>:
+    BoxLayout:
+        id: boxcerto5
+        canvas.before:
+            Color:
+                rgba: 1,1,1,1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                source: 'back_clear.png'
+        orientation: 'vertical'
+        ActionBar:
+            ActionView:
+                ActionPrevious:
+                    title:'COMPLETE COM X OU SS'
+                    on_release: app.root.current ='play'
+                ActionButton:
+                    text: 'Sair'
+                    on_release: app.stop()
+    Widget:
+    BoxLayout:
+        padding: 10
+        size_hint_y: None
+        height: 60
+        Botao:
+            font_size:22
+            text: 'Continuar'
+            on_press: app.root.current='fase6'
+
+<Words5>
+    id: palavra
+    padding: 50
+    spacing: 10
+    BoxLayout
+        padding: 70
+        Label:
+            id: label5
+            color: 0.1, 0.5, 0.8, 1
+            font_size: 45
+            bold: True
+    BoxLayout:
+        padding: 40
+        spacing:50
+        Botao:
+            font_size: '30sp'
+            size_hint_y: None
+            height: 60
+            background_normal: 'menuButton.png'
+            background_down: 'menuButtonPressed.png'
+            text:'x'
+            on_press: root.remove_widget(self.parent)
+            on_release: root.ids.label5.text='Errado'
+        Botao:
+            font_size: '30sp'
+            size_hint_y: None
+            height: 60
+            background_normal: 'menuButton.png'
+            background_down: 'menuButtonPressed.png'
+            text:'SS'
+            on_press: root.remove_widget(self.parent)
+            on_release: app.root.get_screen('fase5').ids.ponto.text= str(int(app.root.get_screen('fase5').ids.ponto.text)+1)
+
+
+<WordsComplete5>
+    id: palavra
+    padding: 20
+    Label:
+        id: labelc5
+        color: 0.1, 0.5, 0.8, 1
+        font_size: 50
+        bold: True
+
+#Fase Seis
+
+<FaseSeis>:
+    BoxLayout:
+        id: box6
+        canvas.before:
+            Color:
+                rgba: 1,1,1,1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                source: 'back_clear.png'
+        orientation: 'vertical'
+        ActionBar:
+            ActionView:
+                ActionPrevious:
+                    title:'6 COMPLETE COM X OU CH'
+                    with_previous: False
+                    on_release: app.root.current ='play'
+                ActionButton:
+                    text: 'Sair'
+                    on_release: app.stop()
+    Widget:
+    BoxLayout:
+        padding: 10
+        size_hint_y: None
+        height: 60
+        spacing: 10
+        Botao:
+            font_size:20
+            bold: True
+            text: 'Ver Palavras'
+            on_press: app.root.current='fase6c'
+        Pontos:
+            id: ponto
+            text: '0'
+            font_size: 22
+            bold: True
+            height: self.font_size
+
+<FaseSeisCerto>:
+    BoxLayout:
+        id: boxcerto6
+        canvas.before:
+            Color:
+                rgba: 1,1,1,1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                source: 'back_clear.png'
+        orientation: 'vertical'
+        ActionBar:
+            ActionView:
+                ActionPrevious:
+                    title:'COMPLETE COM X OU CH'
+                    on_release: app.root.current ='play'
+                ActionButton:
+                    text: 'Sair'
+                    on_release: app.stop()
+    Widget:
+    BoxLayout:
+        padding: 10
+        size_hint_y: None
+        height: 60
+        Botao:
+            font_size:20
+            text: 'Continuar'
+            on_press: app.root.current='fase7'
+
+<Words6>
+    id: palavra
+    padding: 50
+    spacing: 10
+    BoxLayout
+        padding: 70
+        Label:
+            id: label6
+            color: 0.1, 0.5, 0.8, 1
+            font_size: 45
+            bold: True
+    BoxLayout:
+        padding: 40
+        spacing:50
+        Botao:
+            font_size: '30sp'
+            size_hint_y: None
+            height: 60
+            background_normal: 'menuButton.png'
+            background_down: 'menuButtonPressed.png'
+            text:'X'
+            on_press: root.remove_widget(self.parent)
+            on_release: app.root.get_screen('fase6').ids.ponto.text= str(int(app.root.get_screen('fase6').ids.ponto.text)+1)
+        Botao:
+            font_size: '30sp'
+            size_hint_y: None
+            height: 60
+            background_normal: 'menuButton.png'
+            background_down: 'menuButtonPressed.png'
+            text:'CH'
+            on_press: root.remove_widget(self.parent)
+            on_release: root.ids.label6.text='Errado'
+
+<WordsComplete6>
+    id: palavra
+    padding: 20
+    Label:
+        id: labelc6
+        color: 0.1, 0.5, 0.8, 1
+        font_size: 50
+        bold: True
+
+# FASE SETE
+
+<FaseSete>:
+    BoxLayout:
+        id: box7
+        canvas.before:
+            Color:
+                rgba: 1,1,1,1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                source: 'back_clear.png'
+        orientation: 'vertical'
+        ActionBar:
+            ActionView:
+                ActionPrevious:
+                    title:'7 COMPLETE COM R OU RR'
+                    with_previous: False
+                    on_release: app.root.current ='play'
+                ActionButton:
+                    text: 'Sair'
+                    on_release: app.stop()
+    Widget:
+    BoxLayout:
+        padding: 10
+        size_hint_y: None
+        height: 60
+        spacing: 10
+        Botao:
+            font_size:20
+            bold: True
+            text: 'Ver Palavras'
+            on_press: app.root.current='fase7c'
+        Pontos:
+            id: ponto
+            text: '0'
+            font_size: 22
+            bold: True
+            height: self.font_size
+
+<FaseSeteCerto>:
+    BoxLayout:
+        id: boxcerto7
+        canvas.before:
+            Color:
+                rgba: 1,1,1,1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                source: 'back_clear.png'
+        orientation: 'vertical'
+        ActionBar:
+            ActionView:
+                ActionPrevious:
+                    title:'COMPLETE COM R OU RR'
+                    on_release: app.root.current ='play'
+                ActionButton:
+                    text: 'Sair'
+                    on_release: app.stop()
+    Widget:
+    BoxLayout:
+        padding: 10
+        size_hint_y: None
+        height: 60
+        Botao:
+            font_size:20
+            text: 'Continuar'
+            on_press: app.root.current='fase8'
+
+<Words7>
+    id: palavra
+    padding: 50
+    spacing: 10
+    BoxLayout
+        padding: 70
+        Label:
+            id: label7
+            color: 0.1, 0.5, 0.8, 1
+            font_size: 45
+            bold: True
+    BoxLayout:
+        padding: 40
+        spacing:50
+        Botao:
+            font_size: '30sp'
+            size_hint_y: None
+            height: 60
+            background_normal: 'menuButton.png'
+            background_down: 'menuButtonPressed.png'
+            text:'R'
+            on_press: root.remove_widget(self.parent)
+            on_release: root.ids.label7.text='Errado'
+
+        Botao:
+            font_size: '30sp'
+            size_hint_y: None
+            height: 60
+            background_normal: 'menuButton.png'
+            background_down: 'menuButtonPressed.png'
+            text:'RR'
+            on_press: root.remove_widget(self.parent)
+            on_release: app.root.get_screen('fase7').ids.ponto.text= str(int(app.root.get_screen('fase7').ids.ponto.text)+1)
+
+<WordsComplete7>
+    id: palavra
+    padding: 20
+    Label:
+        id: labelc7
+        color: 0.1, 0.5, 0.8, 1
+        font_size: 50
+        bold: True
+
+# FASE OITO
+
+<FaseOito>:
+    BoxLayout:
+        id: box8
+        canvas.before:
+            Color:
+                rgba: 1,1,1,1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                source: 'back_clear.png'
+        orientation: 'vertical'
+        ActionBar:
+            ActionView:
+                ActionPrevious:
+                    title:'8 COMPLETE COM X OU SS'
+                    with_previous: False
+                    on_release: app.root.current ='play'
+                ActionButton:
+                    text: 'Sair'
+                    on_release: app.stop()
+    Widget:
+    BoxLayout:
+        padding: 10
+        size_hint_y: None
+        height: 60
+        spacing: 10
+        Botao:
+            font_size:20
+            bold: True
+            text: 'Ver Palavras'
+            on_press: app.root.current='fase8c'
+        Pontos:
+            id: ponto
+            text: '0'
+            font_size: 22
+            bold: True
+            height: self.font_size
+
+<FaseOitoCerto>:
+    BoxLayout:
+        id: boxcerto8
+        canvas.before:
+            Color:
+                rgba: 1,1,1,1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                source: 'back_clear.png'
+        orientation: 'vertical'
+        ActionBar:
+            ActionView:
+                ActionPrevious:
+                    title:'COMPLETE COM X OU SS'
+                    on_release: app.root.current ='play'
+                ActionButton:
+                    text: 'Sair'
+                    on_release: app.stop()
+    Widget:
+    BoxLayout:
+        padding: 10
+        size_hint_y: None
+        height: 60
+        Botao:
+            font_size:20
+            text: 'Continuar'
+            on_press: app.root.current='fase9'
+
+<Words8>
+    id: palavra
+    padding: 50
+    spacing: 10
+    BoxLayout
+        padding: 70
+        Label:
+            id: label8
+            color: 0.1, 0.5, 0.8, 1
+            font_size: 45
+            bold: True
+    BoxLayout:
+        padding: 40
+        spacing:50
+        Botao:
+            font_size: '30sp'
+            size_hint_y: None
+            height: 60
+            background_normal: 'menuButton.png'
+            background_down: 'menuButtonPressed.png'
+            text:'SS'
+            on_press: root.remove_widget(self.parent)
+            on_release: root.ids.label8.text='Errado'
+
+        Botao:
+            font_size: '30sp'
+            size_hint_y: None
+            height: 60
+            background_normal: 'menuButton.png'
+            background_down: 'menuButtonPressed.png'
+            text:'X'
+            on_press: root.remove_widget(self.parent)
+            on_release: app.root.get_screen('fase8').ids.ponto.text= str(int(app.root.get_screen('fase8').ids.ponto.text)+1)
+
+<WordsComplete8>
+    id: palavra
+    padding: 20
+    Label:
+        id: labelc8
+        color: 0.1, 0.5, 0.8, 1
+        font_size: 50
+        bold: True
+
+#FASE NOVE
+
+<FaseNove>:
+    BoxLayout:
+        id: box9
+        canvas.before:
+            Color:
+                rgba: 1,1,1,1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                source: 'back_clear.png'
+        orientation: 'vertical'
+        ActionBar:
+            ActionView:
+                ActionPrevious:
+                    title:'9 COMPLETE COM R OU RR'
+                    with_previous: False
+                    on_release: app.root.current ='play'
+                ActionButton:
+                    text: 'Sair'
+                    on_release: app.stop()
+    Widget:
+    BoxLayout:
+        padding: 10
+        size_hint_y: None
+        height: 60
+        spacing: 10
+        Botao:
+            font_size:20
+            bold: True
+            text: 'Ver Palavras'
+            on_press: app.root.current='fase9c'
+        Pontos:
+            id: ponto
+            text: '0'
+            font_size: 22
+            bold: True
+            height: self.font_size
+
+<FaseNoveCerto>:
+    BoxLayout:
+        id: boxcerto9
+        canvas.before:
+            Color:
+                rgba: 1,1,1,1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                source: 'back_clear.png'
+        orientation: 'vertical'
+        ActionBar:
+            ActionView:
+                ActionPrevious:
+                    title:'COMPLETE COM R OU RR'
+                    on_release: app.root.current ='play'
+                ActionButton:
+                    text: 'Sair'
+                    on_release: app.stop()
+    Widget:
+    BoxLayout:
+        padding: 10
+        size_hint_y: None
+        height: 60
+        Botao:
+            font_size:20
+            text: 'Continuar'
+            on_press: app.root.current='fase10'
+
+<Words9>
+    id: palavra
+    padding: 50
+    spacing: 10
+    BoxLayout
+        padding: 70
+        Label:
+            id: label9
+            color: 0.1, 0.5, 0.8, 1
+            font_size: 45
+            bold: True
+    BoxLayout:
+        padding: 40
+        spacing:50
+        Botao:
+            font_size: '30sp'
+            size_hint_y: None
+            height: 60
+            background_normal: 'menuButton.png'
+            background_down: 'menuButtonPressed.png'
+            text:'RR'
+            on_press: root.remove_widget(self.parent)
+            on_release: root.ids.label9.text='Errado'
+
+        Botao:
+            font_size: '30sp'
+            size_hint_y: None
+            height: 60
+            background_normal: 'menuButton.png'
+            background_down: 'menuButtonPressed.png'
+            text:'R'
+            on_press: root.remove_widget(self.parent)
+            on_release: app.root.get_screen('fase9').ids.ponto.text= str(int(app.root.get_screen('fase9').ids.ponto.text)+1)
+
+<WordsComplete9>
+    id: palavra
+    padding: 20
+    Label:
+        id: labelc9
+        color: 0.1, 0.5, 0.8, 1
+        font_size: 50
+        bold: True
+
+# FASE DEZ
+
+<FaseDez>:
+    BoxLayout:
+        id: box10
+        canvas.before:
+            Color:
+                rgba: 1,1,1,1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                source: 'back_clear.png'
+        orientation: 'vertical'
+        ActionBar:
+            ActionView:
+                ActionPrevious:
+                    title:'10 COMPLETE COM X OU Z'
+                    with_previous: False
+                    on_release: app.root.current ='play'
+                ActionButton:
+                    text: 'Sair'
+                    on_release: app.stop()
+    Widget:
+    BoxLayout:
+        padding: 10
+        size_hint_y: None
+        height: 60
+        spacing: 10
+        Botao:
+            font_size:20
+            bold: True
+            text: 'Ver Palavras'
+            on_press: app.root.current='fase10c'
+        Pontos:
+            id: ponto
+            text: '0'
+            font_size: 22
+            bold: True
+            height: self.font_size
+
+<FaseDezCerto>:
+    BoxLayout:
+        id: boxcerto10
+        canvas.before:
+            Color:
+                rgba: 1,1,1,1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                source: 'back_clear.png'
+        orientation: 'vertical'
+        ActionBar:
+            ActionView:
+                ActionPrevious:
+                    title:'COMPLETE COM X OU Z'
+                    on_release: app.root.current ='play'
+                ActionButton:
+                    text: 'Sair'
+                    on_release: app.stop()
+    Widget:
+    BoxLayout:
+        padding: 10
+        size_hint_y: None
+        height: 60
+        Botao:
+            font_size:20
+            text: 'Continuar'
+            on_press: app.root.current='fase11'
+
+<Words10>
+    id: palavra
+    padding: 50
+    spacing: 10
+    BoxLayout
+        padding: 70
+        Label:
+            id: label10
+            color: 0.1, 0.5, 0.8, 1
+            font_size: 45
+            bold: True
+    BoxLayout:
+        padding: 40
+        spacing:50
+        Botao:
+            font_size: '30sp'
+            size_hint_y: None
+            height: 60
+            background_normal: 'menuButton.png'
+            background_down: 'menuButtonPressed.png'
+            text:'Z'
+            on_press: root.remove_widget(self.parent)
+            on_release: app.root.get_screen('fase10').ids.ponto.text= str(int(app.root.get_screen('fase10').ids.ponto.text)+1)
+        Botao:
+            font_size: '30sp'
+            size_hint_y: None
+            height: 60
+            background_normal: 'menuButton.png'
+            background_down: 'menuButtonPressed.png'
+            text:'X'
+            on_press: root.remove_widget(self.parent)
+            on_release: root.ids.label10.text='Errado'
+
+<WordsComplete10>
+    id: palavra
+    padding: 20
+    Label:
+        id: labelc10
+        color: 0.1, 0.5, 0.8, 1
+        font_size: 50
+        bold: True
+
+#Fase Onze
+
+<FaseOnze>:
+    BoxLayout:
+        id: box11
+        canvas.before:
+            Color:
+                rgba: 1,1,1,1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                source: 'back_clear.png'
+        orientation: 'vertical'
+        ActionBar:
+            ActionView:
+                ActionPrevious:
+                    title:'11 COMPLETE COM S OU SS'
+                    with_previous: False
+                    on_release: app.root.current ='play'
+                ActionButton:
+                    text: 'Sair'
+                    on_release: app.stop()
+    Widget:
+    BoxLayout:
+        padding: 10
+        size_hint_y: None
+        height: 60
+        spacing: 10
+        Botao:
+            font_size:20
+            bold: True
+            text: 'Ver Palavras'
+            on_press: app.root.current='fase11c'
+        Pontos:
+            id: ponto
+            text: '0'
+            font_size: 22
+            bold: True
+            height: self.font_size
+
+<FaseOnzeCerto>:
+    BoxLayout:
+        id: boxcerto11
+        canvas.before:
+            Color:
+                rgba: 1,1,1,1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                source: 'back_clear.png'
+        orientation: 'vertical'
+        ActionBar:
+            ActionView:
+                ActionPrevious:
+                    title:'COMPLETE COM S OU SS'
+                    on_release: app.root.current ='play'
+                ActionButton:
+                    text: 'Sair'
+                    on_release: app.stop()
+    Widget:
+    BoxLayout:
+        padding: 10
+        size_hint_y: None
+        height: 60
+        Botao:
+            font_size:20
+            text: 'Continuar'
+            on_press: app.root.current='play'
+
+<Words11>
+    id: palavra
+    padding: 50
+    spacing: 10
+    BoxLayout
+        padding: 70
+        Label:
+            id: label11
+            color: 0.1, 0.5, 0.8, 1
+            font_size: 45
+            bold: True
+    BoxLayout:
+        padding: 40
+        spacing:50
+        Botao:
+            font_size: '30sp'
+            size_hint_y: None
+            height: 60
+            background_normal: 'menuButton.png'
+            background_down: 'menuButtonPressed.png'
+            text:'S'
+            on_press: root.remove_widget(self.parent)
+            on_release: app.root.get_screen('fase11').ids.ponto.text= str(int(app.root.get_screen('fase11').ids.ponto.text)+1)
+        Botao:
+            font_size: '30sp'
+            size_hint_y: None
+            height: 60
+            background_normal: 'menuButton.png'
+            background_down: 'menuButtonPressed.png'
+            text:'SS'
+            on_press: root.remove_widget(self.parent)
+            on_release: root.ids.label11.text='Errado'
+
+<WordsComplete11>
+    id: palavra
+    padding: 20
+    Label:
+        id: labelc11
+        color: 0.1, 0.5, 0.8, 1
+        font_size: 50
+        bold: True
